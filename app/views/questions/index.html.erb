@@ -1,0 +1,39 @@
+<h1> Listing Questions </h1>
+<table>
+  <tr>
+    <th>ID</th>
+    <th>TITLE</th>
+    <th>CONTENT</th>
+    <th>VOTE COUNT</th>
+    <th> UP VOTE</th>
+    <th> VOTES TOTAL </th>
+  </tr>
+
+  <% @questions.each do |question| %>
+    <tr>
+      <td><%= question.id %></td>
+      <td><%= question.title %></td>
+      <td><%= question.content %></td>
+      <td><%= question.votes%></td>
+      <td><%=link_to 'Upvote', "/questions/upvote/#{question.id}" %></td>
+      <td><%= link_to 'Downvote', "/questions/downvote/#{question.id}"%></td>
+    </tr>
+  <% end %>
+</table>
+<h2> New Question </h2>
+<%=form_for :question, url: questions_path do |f| %>
+  <p>
+    <%= f.label :title %><br>
+    <%= f.text_field :title %>
+  </p>
+
+   <p>
+    <%= f.label :content %><br>
+    <%= f.text_area :content %>
+  </p>
+
+   <p>
+    <%= f.submit %>
+  </p>
+<% end %>
+
