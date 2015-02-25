@@ -1,22 +1,24 @@
+<h1><em><%= Quote.all.sample.text%></em></h1>
+
 <h1> Listing Questions </h1>
 <table>
   <tr>
-    <th>ID</th>
-    <th>TITLE</th>
-    <th>CONTENT</th>
-    <th>VOTE COUNT</th>
-    <th> UP VOTE</th>
-    <th> VOTES TOTAL </th>
+    <th>ID</th><td></td>
+    <th>TITLE</th><td></td>
+    <th>CONTENT</th><td></td>
+    <th>VOTE COUNT</th><td></td>
+    <th>LIKE</th><td></td>
+    <th>UNLIKE</th><td></td>
   </tr>
 
   <% @questions.each do |question| %>
     <tr>
-      <td><%= question.id %></td>
-      <td><%= question.title %></td>
-      <td><%= question.content %></td>
-      <td><%= question.votes%></td>
-      <td><%=link_to 'Upvote', "/questions/upvote/#{question.id}" %></td>
-      <td><%= link_to 'Downvote', "/questions/downvote/#{question.id}"%></td>
+      <td><%= question.id %></td><td></td>
+      <td><%= question.title %></td><td></td>
+      <td><%= question.content %></td><td></td>
+      <td><%= question.votes%></td><td></td>
+      <td><%=link_to 'LIKE', "/questions/upvote/#{question.id}" %></td><td></td>
+      <td><%= link_to 'UNLIKE', "/questions/downvote/#{question.id}"%></td>
     </tr>
   <% end %>
 </table>

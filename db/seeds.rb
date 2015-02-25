@@ -11,3 +11,12 @@ user = User.create(username: "shamhavi", email:"shambhavi1976@gmail.com", passwo
   question = Question.create(title: Faker::Company.bs , content: Faker::Lorem.sentence, user_id: user.id)
   answer = Answer.create(question_id: question.id, content: Faker::Lorem.sentence, user_id: user.id)
 }
+
+
+require 'httparty'
+APPLICATION_NAME = "Httparty"
+50.times do
+  response = HTTParty.get('https://api.github.com/zen', headers: {"User-Agent" => APPLICATION_NAME}, basic_auth: { username: ENV['USERNAME'], password: ENV['PASSWORD']})
+  Quote.create(text: response.body)
+end
+
